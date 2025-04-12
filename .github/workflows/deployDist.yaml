@@ -3,7 +3,7 @@ name: Deploy Dist
 on:
   push:
     branches:
-      - main
+      - master
       - 'feature/**'
     paths-ignore:
       - '.github/workflows/*'  
@@ -74,21 +74,11 @@ jobs:
           name: dist-files
           path: dist
 
-      - name: Deploy
-        run: echo "Deploy successful"
-  # deploy:
-  # needs: build
-  # runs-on: ubuntu-latest
-  # steps:
-  #   - name: Download Dist Artifact
-  #     uses: actions/download-artifact@v4
-  #     with:
-  #       name: dist-files
-  #       path: dist
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
 
-  #   - name: Deploy to Netlify
-  #     run: npx netlify deploy --dir=dist --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --prod
-  #     env:
-  #       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-  #       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
+      - name: Deploy to Netlify
+        run: npx netlify deploy --dir=dist --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
