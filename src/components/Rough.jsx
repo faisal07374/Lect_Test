@@ -58,3 +58,16 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
+// Steps to deploy projects on netlify
+
+
+// 🔐 Final Checklist (Must Do)
+// Step	What to do
+// 🔑 GitHub Secrets	Go to repo > Settings > Secrets and add:
+// NETLIFY_AUTH_TOKEN	Your personal access token from Netlify
+// NETLIFY_SITE_ID	Your Netlify site's ID (from dashboard)
+// 🛠 _redirects	Add in public/_redirects with 
+// 🧠 vite.config.js	Make sure it has base: '/'

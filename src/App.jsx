@@ -15,7 +15,7 @@ function App() {
     <>
       <Header />
       <Navbar />
-      <CenterLogo />
+      {/* <CenterLogo /> */}
       <ProductPage />
       <ProductDetails />
       <RelatedProducts />
